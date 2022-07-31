@@ -365,5 +365,10 @@ namespace OutwardSaveTransfer
                 console.Print_error_text("\nYour typed in directory doesn't exist!");
             }
         }
+
+        private void Form2_Closing(object sender, FormClosingEventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
     }
 }

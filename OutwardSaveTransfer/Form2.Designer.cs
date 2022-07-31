@@ -41,6 +41,7 @@ namespace OutwardSaveTransfer
             // 
             // file_browser_button
             // 
+            this.file_browser_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.file_browser_button.BackColor = System.Drawing.Color.White;
             this.file_browser_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.file_browser_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
@@ -56,6 +57,8 @@ namespace OutwardSaveTransfer
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(12, 378);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(519, 20);
@@ -63,6 +66,7 @@ namespace OutwardSaveTransfer
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label1.Location = new System.Drawing.Point(8, 355);
@@ -73,7 +77,7 @@ namespace OutwardSaveTransfer
             // 
             // check_save_location_button
             // 
-            this.check_save_location_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.check_save_location_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.check_save_location_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(219)))), ((int)(((byte)(6)))));
             this.check_save_location_button.FlatAppearance.BorderSize = 0;
@@ -110,6 +114,9 @@ namespace OutwardSaveTransfer
             // 
             // consoleWindow
             // 
+            this.consoleWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.consoleWindow.Location = new System.Drawing.Point(14, 74);
             this.consoleWindow.Name = "consoleWindow";
             this.consoleWindow.ReadOnly = true;
@@ -130,8 +137,10 @@ namespace OutwardSaveTransfer
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(609, 489);
             this.Name = "Form2";
             this.Text = "Options";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_Closing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
