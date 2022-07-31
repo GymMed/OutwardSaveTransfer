@@ -18,7 +18,7 @@ namespace OutwardSaveTransfer
         private static string loadDirectory;
         private static ConsoleWindowClass console;
         private static bool transfering = false;
-        static readonly Regex hierarchyRegex = new Regex(@"(<Hierarchy>)(.*)(<\/Hierarchy>)");
+        //static readonly Regex hierarchyRegex = new Regex(@"(<Hierarchy>)(.*)(<\/Hierarchy>)");
 
         static readonly Dictionary<string, string> StashAreaToStashUID = new Dictionary<string, string>()
         {
@@ -68,8 +68,6 @@ namespace OutwardSaveTransfer
 
         private static void MigrateAll(string saveDirectory)
         {
-            //migrationException = null;
-
             try
             {
                 // Create the base SaveGames folder in case it doesnt exist
@@ -151,13 +149,10 @@ namespace OutwardSaveTransfer
                 }
 
                 Directory.Delete(tempSavesFolder, true);
-
-                //migrationDone = true;
             }
             catch (Exception ex)
             {
-                //migrationException = ex.Message;
-                //Log.LogWarning(ex);
+                console.Print_error_text("\nCaught exception. Error: " + ex);
             }
 
             console.Print_success_text("\nFinished!");
@@ -289,7 +284,6 @@ namespace OutwardSaveTransfer
 
         static void FixFileNames(string saveInstanceFolder)
         {
-            //Log.LogMessage($"\t\t    - Fixing file extensions...");
             console.Print_text("\nFixing file extensions...");
 
             // Update file extensions
@@ -371,66 +365,5 @@ namespace OutwardSaveTransfer
                 console.Print_error_text("\nYour typed in directory doesn't exist!");
             }
         }
-        /*
-public class SaveInstance_PreLoadInstance
-{
-   static bool Prefix(SaveInstance __instance)
-   {
-       Override(__instance);
-       return false;
-   }
-
-   static void Override(SaveInstance __instance)
-   {
-       if (!__instance.m_isValid)
-           return;
-
-       __instance.InitSaveInstance();
-
-       if (!__instance.CharSave.LoadFromFile(__instance.SavePath))
-       {
-           //Debug.LogError("Could not load Character Save at " + __instance.SavePath);
-           __instance.m_isValid = false;
-           return;
-       }
-
-       if (!__instance.WorldSave.LoadFromFile(__instance.SavePath))
-       {
-           //Debug.LogError("Could not load World Save at " + __instance.SavePath);
-           __instance.m_isValid = false;
-           return;
-       }
-
-       // Our change: comment out these warnings.
-
-       if (!__instance.LegacyChestSave.LoadFromFile(__instance.SavePath))
-       {
-           __instance.LegacyChestSave = new LegacyChestSave();
-           //Debug.LogError("Could not load Legacy Save at " + __instance.SavePath);
-       }
-
-       if (!__instance.MapSave.LoadFromFile(__instance.SavePath))
-       {
-           __instance.MapSave = new MapSave();
-           //Debug.LogError("Could not load Map Save at " + __instance.SavePath);
-       }
-
-       string fileExtension = EnvironmentSave.FileExtension;
-       string[] files = Directory.GetFiles(__instance.SavePath, "*" + EnvironmentSave.FileExtension + "*");
-
-       for (int i = 0; i < files.Length; i++)
-       {
-           int num = files[i].LastIndexOf("/");
-           string text = files[i].Substring(num + 1);
-           int length = text.IndexOf(fileExtension);
-           string text2 = text.Substring(0, length);
-
-           if (!__instance.m_invalidAreas.Contains(text2))
-               //Debug.LogErrorFormat("{0} was marked as invalid and was skipped from loading.", new object[] { text2 });
-           //else
-               __instance.PathToSceneSaves.Add(text2, files[i]);
-       }
-   }
-}*/
     }
 }
